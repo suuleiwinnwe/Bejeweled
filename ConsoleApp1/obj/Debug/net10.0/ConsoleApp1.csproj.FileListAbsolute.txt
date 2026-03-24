@@ -1,0 +1,14 @@
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/bin/Debug/net10.0/ConsoleApp1
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/bin/Debug/net10.0/ConsoleApp1.deps.json
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/bin/Debug/net10.0/ConsoleApp1.runtimeconfig.json
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/bin/Debug/net10.0/ConsoleApp1.dll
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/bin/Debug/net10.0/ConsoleApp1.pdb
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.AssemblyInfoInputs.cache
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.AssemblyInfo.cs
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.csproj.CoreCompileInputs.cache
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.dll
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/refint/ConsoleApp1.dll
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.pdb
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.genruntimeconfig.cache
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ref/ConsoleApp1.dll
