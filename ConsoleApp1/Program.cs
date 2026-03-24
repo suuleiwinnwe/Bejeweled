@@ -4,23 +4,35 @@ class Program
 {
     static void Main()
     {
-        Board board = new Board(6, 6);
+        GameController game = new GameController(8, 8, 10);
 
         string[] preset =
         {
-            "RRGGGB",
-            "BRGGGY",
-            "BRPPPY",
-            "YBGGGR",
-            "YBRRRP",
-            "PBYGGR"
+            "RBGYPBRG",
+            "GYRBPYGB",
+            "BPGYRGBY",
+            "YGBRPYGR",
+            "PBRGYBPG",
+            "GRYBPGRY",
+            "BYGPRYBP",
+            "RPBGYGRP"
         };
 
-        board.LoadPreset(preset);
+        game.StartGame(preset);
 
         Console.WriteLine("Initial Board:");
-        board.PrintBoard();
+        game.GetBoard().PrintBoard();
+        game.PrintStatus();
 
-        board.ResolveCascades(true);
+        game.TrySwap(0, 0, 0, 1, true);
+
+        Console.WriteLine("Final Board:");
+        game.GetBoard().PrintBoard();
+        game.PrintStatus();
+
+        if (game.IsGameOver())
+        {
+            Console.WriteLine("Game Over.");
+        }
     }
 }

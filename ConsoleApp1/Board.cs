@@ -43,8 +43,14 @@ public class Board
 
     public void LoadPreset(string[] preset)
     {
+        if (preset.Length != rows)
+            throw new Exception("Preset row count does not match board size.");
+
         for (int i = 0; i < rows; i++)
         {
+            if (preset[i].Length != cols)
+                throw new Exception("Preset column count does not match board size.");
+
             for (int j = 0; j < cols; j++)
             {
                 char ch = preset[i][j];
@@ -75,12 +81,32 @@ public class Board
         Console.WriteLine();
     }
 
-    // -------- MATCH DETECTION --------
+    public bool IsInBounds(int r, int c)
+    {
+        return r >= 0 && r < rows && c >= 0 && c < cols;
+    }
+
+    public bool IsAdjacent(int r1, int c1, int r2, int c2)
+    {
+        int rowDiff = Math.Abs(r1 - r2);
+        int colDiff = Math.Abs(c1 - c2);
+
+        return (rowDiff == 1 && colDiff == 0) ||
+               (rowDiff == 0 && colDiff == 1);
+    }
+
+    public void Swap(int r1, int c1, int r2, int c2)
+    {
+        GemType temp = grid[r1, c1].Type;
+        grid[r1, c1].Type = grid[r2, c2].Type;
+        grid[r2, c2].Type = temp;
+    }
+
     public SortedSet<Position> FindMatches()
     {
         SortedSet<Position> matches = new SortedSet<Position>();
 
-        // rows
+        // check rows
         for (int i = 0; i < rows; i++)
         {
             int start = 0;
@@ -106,7 +132,7 @@ public class Board
             }
         }
 
-        // columns
+        // check columns
         for (int j = 0; j < cols; j++)
         {
             int start = 0;
@@ -139,7 +165,7 @@ public class Board
     {
         int count = 0;
 
-        foreach (var pos in matches)
+        foreach (Position pos in matches)
         {
             if (!grid[pos.Row, pos.Col].IsEmpty())
             {
@@ -151,7 +177,6 @@ public class Board
         return count;
     }
 
-    // GRAVITY 
     public void ApplyGravity()
     {
         for (int j = 0; j < cols; j++)
@@ -165,10 +190,18 @@ public class Board
                     grid[write, j].Type = grid[i, j].Type;
 
                     if (write != i)
+                    {
                         grid[i, j].Type = GemType.Empty;
+                    }
 
                     write--;
                 }
+            }
+
+            while (write >= 0)
+            {
+                grid[write, j].Type = GemType.Empty;
+                write--;
             }
         }
     }
@@ -187,30 +220,34 @@ public class Board
         }
     }
 
-    // CASCADE LOOP
-    public void ResolveCascades(bool show)
+    public bool HasLegalMove()
     {
-        while (true)
+        for (int i = 0; i < rows; i++)
         {
-            var matches = FindMatches();
-
-            if (matches.Count == 0)
+            for (int j = 0; j < cols; j++)
             {
-                Console.WriteLine("No more matches.");
-                break;
+                if (j + 1 < cols)
+                {
+                    Swap(i, j, i, j + 1);
+                    bool hasMatch = FindMatches().Count > 0;
+                    Swap(i, j, i, j + 1);
+
+                    if (hasMatch)
+                        return true;
+                }
+
+                if (i + 1 < rows)
+                {
+                    Swap(i, j, i + 1, j);
+                    bool hasMatch = FindMatches().Count > 0;
+                    Swap(i, j, i + 1, j);
+
+                    if (hasMatch)
+                        return true;
+                }
             }
-
-            Console.WriteLine("Match Found!");
-            ClearMatches(matches);
-            PrintBoard();
-
-            ApplyGravity();
-            Console.WriteLine("After Gravity:");
-            PrintBoard();
-
-            Refill();
-            Console.WriteLine("After Refill:");
-            PrintBoard();
         }
+
+        return false;
     }
 }

@@ -12,3 +12,4 @@
 /Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.pdb
 /Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.genruntimeconfig.cache
 /Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ref/ConsoleApp1.dll
+/Users/suuleiwinnwe/Bejeweled/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.sourcelink.json
